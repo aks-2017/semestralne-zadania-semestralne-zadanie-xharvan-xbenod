@@ -34,3 +34,6 @@ Nami pripravené web rozhranie bude mať nasledovné funkcie:
 * Prezeranie firewall pravidiel všetkých prepínačov
 * Pridanie pravidla pre špecifický prepínač
 * Odobranie pravidla pre špecifický prepínač
+
+
+![switch](https://github.com/aks-2017/semestralne-zadania-semestralne-zadanie-xharvan-xbenod/blob/master/docs/switch_diagram.png)
