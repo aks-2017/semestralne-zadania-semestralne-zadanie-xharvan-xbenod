@@ -26,13 +26,11 @@ Náš testovací scénar je:
 
 ## Popis funkcií firewall-u
 
-Nami pripravené web rozhranie bude mať nasledovné funkcie.
+Nami pripravené web rozhranie bude mať nasledovné funkcie:
 * Prezeranie statusu všetkých firewall prepínačov
 * Zapnutie/Vypnutie firewall prepínaču
-
 * Prezeranie statusu logovania všetkých firewall prepínačov
 * Zapnutie/Vypnutie logovania firewall prepínaču
-
 * Prezeranie firewall pravidiel všetkých prepínačov
 * Pridanie pravidla pre špecifický prepínač
 * Odobranie pravidla pre špecifický prepínač
