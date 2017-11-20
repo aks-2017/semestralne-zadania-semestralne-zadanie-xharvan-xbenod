@@ -12,7 +12,7 @@ V našom zadaní sa budeme držať postupov v článku. Autori článku, nezvere
 Experiment budeme robiť na emulovanej sieti v emulátore Mininet. Vytvoríme sieť so stromovou topológiou.
 Na vytvorené zariadenia použijeme Ryu controller a firewall.
 
-Nastavenie parametrov bude možné cez webové rozhranie pripojené k sieti, ktoré vytvoríme my. Nastavenia firewallu, ktoré budú napĺňať naše testovacie scenáre, sa budú dať vykonať cez naše webové rozhranie. Naša aplikácia bude s firewallom komunikovať cez REST API.
+Nastavenie parametrov bude možné cez webové rozhranie pripojené k sieti, ktoré vytvoríme my. Nastavenia firewallu, ktoré budú napĺňať naše testovacie scenáre, sa budú dať vykonať cez naše webové rozhranie. Naša aplikácia bude s firewallom komunikovať cez REST API (Obr. 2).
 
 V tejto sieti sme si pripravili, podobne ako v článku, testovacie scenáre, ktoré by mal byť náš firewall schopný obslúžiť.
 
