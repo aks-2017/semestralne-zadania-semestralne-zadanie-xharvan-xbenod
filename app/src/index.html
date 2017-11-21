@@ -168,6 +168,13 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="nav-right">
+                    <li class="notifications ">
+                        <a class="ip-address-show">
+
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -179,8 +186,8 @@
                     <div class="masonry-item  w-100 switch">
                         <div class="row gap-20">
                             <div class="col-md-12">
-                                <h2>Switch status:</h2>
-                                <table class="switch-table table table-responsive">
+                                <h2>Firewall status:</h2>
+                                <table class="table table-striped switch-table">
                                     <thead>
                                     <th>ID</th>
                                     <th>Enabled</th>
@@ -197,17 +204,15 @@
                 </div>
 
                 <div class="bgc-white p-20 bd ip-address">
-                    <h6 class="c-grey-900">Complex Form Layout</h6>
+                    <h6 class="c-grey-900">IP address</h6>
                     <div class="mT-30">
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label for="inputIp">IP address (e.g.: 192.168.56.101:8080):</label>
-                                    <input type="text" class="form-control" id="inputIp" placeholder="IP address">
-                                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputIp">IP address (e.g.: 192.168.56.101:8080):</label>
+                                <input type="text" class="form-control" id="inputIp" placeholder="IP address">
                             </div>
-                            <button type="submit" class="btn btn-primary">Put</button>
-                        </form>
+                        </div>
+                        <button type="submit" class="put-ip btn btn-primary">Put</button>
                     </div>
                 </div>
 

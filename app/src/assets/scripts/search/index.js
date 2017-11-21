@@ -2,9 +2,10 @@ import * as $ from 'jquery';
 
 
 function initIp() {
-    if (Cookies.get('ip_saved') === true) {
+    if (Cookies.get('ip_saved') === 'true') {
         $('.ip-address').css("display", "none")
-    }else {
+        $('.ip-address-show').html('IP address: ' + Cookies.get('ip'));
+    } else {
         $('.switch').css("display", "none")
     }
 }
@@ -19,13 +20,41 @@ export default (function () {
         enableSwitch('enable', 'all');
     })
 
+    $('.put-ip').click(function () {
+        let ipAddress = $('#inputIp').val();
+        console.log(ipAddress);
+        if (validateIpAndPort(ipAddress)) {
+            Cookies.set('ip_saved', true);
+            Cookies.set('ip', ipAddress);
+            initIp();
+        } else {
+            alert("You have entered invalid IP address.\nYou have to enter IP with Port");
+        }
+    })
+
 
 }());
+
+function validateIpAndPort(input) {
+    var parts = input.split(":");
+    var ip = parts[0].split(".");
+    var port = parts[1];
+    return validateNum(port, 1, 65535) &&
+        ip.length == 4 &&
+        ip.every(function (segment) {
+            return validateNum(segment, 0, 255);
+        });
+}
+
+function validateNum(input, min, max) {
+    var num = +input;
+    return num >= min && num <= max && input === num.toString();
+}
 
 function enableSwitch(enable, switchId) {
     $.ajax({
         method: 'PUT',
-        url: 'http://192.168.56.101:8080/firewall/module/' + enable + '/' + switchId,
+        url: 'http://' + Cookies.get('ip') + '/firewall/module/' + enable + '/' + switchId,
         datatype: 'jsonp',
         crossDomain: true,
         success: function (data) {
@@ -42,7 +71,7 @@ function enableSwitch(enable, switchId) {
 function initDashboard() {
     $.ajax({
         method: 'GET',
-        url: 'http://192.168.56.101:8080/firewall/module/status',
+        url: 'http://' + Cookies.get('ip') + '/firewall/module/status',
         datatype: 'jsonp',
         crossDomain: true,
         success: function (data) {
