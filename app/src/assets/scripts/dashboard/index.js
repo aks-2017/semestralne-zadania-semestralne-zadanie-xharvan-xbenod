@@ -133,7 +133,7 @@ function parseSwitchesResponseForRules(json) {
     let switchTable = $('.switch-body');
     for (let i = 0; i < json.length; i++) {
         if (json[i].status === 'disable') {
-            return;
+            continue;
         }
         if (showFirstEnabled === 0) {
             showRulesForSwitch(json[i].switch_id);
