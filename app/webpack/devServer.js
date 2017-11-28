@@ -5,7 +5,6 @@
 const
   manifest = require('./manifest');
 
-
 // ------------------
 // @DevServer Configs
 // ------------------

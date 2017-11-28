@@ -1,6 +1,3 @@
-import * as $ from 'jquery';
-
-
 function initIp() {
     if (Cookies.get('ip_saved') === 'true') {
         $('.ip-address').css("display", "none")
@@ -10,12 +7,10 @@ function initIp() {
     }
 }
 
-export default (function () {
-    $(document).ready(e => {
-        initIp();
-        initDashboard();
-    });
 
+$(document).ready(e => {
+    initIp();
+    initDashboard();
     $('.enable-switch-all').click(function () {
         enableSwitch('enable', 'all');
     })
@@ -31,9 +26,7 @@ export default (function () {
             alert("You have entered invalid IP address.\nYou have to enter IP with Port");
         }
     })
-
-
-}());
+});
 
 function validateIpAndPort(input) {
     var parts = input.split(":");

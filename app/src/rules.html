@@ -54,9 +54,10 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="assets/scripts/rules/index.js"></script>
 </head>
 <body class="app">
-<span id="dashboard-flag" style="display:none"></span>
+<span id="rules-flag" style="display: none"></span>
 <!-- @TOC -->
 <!-- =================================================== -->
 <!--
@@ -121,23 +122,23 @@
 
             <!-- ### $Sidebar Menu ### -->
             <ul class="sidebar-menu scrollable pos-r">
-                <li class="nav-item mT-30 active">
-                    <a class='sidebar-link' href="/" default>
+                <li class="nav-item">
+                    <a class='sidebar-link' href="/">
                         <span class="icon-holder">
                           <i class="c-blue-500 ti-home"></i>
                         </span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class='sidebar-link' href="rules.html">
+                <li class="nav-item mT-30 active">
+                    <a class='sidebar-link' href="">
                         <span class="icon-holder">
                           <i class="c-brown-500 ti-paragraph"></i>
                         </span>
                         <span class="title">Rules</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ">
                     <a class='sidebar-link' href="#">
                         <span class="icon-holder">
                           <i class="c-deep-orange-500 ti-files"></i>
@@ -182,22 +183,102 @@
         <!-- ### $App Screen Content ### -->
         <main class='main-content bgc-grey-100'>
             <div id='mainContent'>
-                <div class="rowr">
-                    <div class="switch">
-                        <div class="row">
+                <div class="row gap-20">
+                    <div class="masonry-sizer col-md-6"></div>
+                    <div class="masonry-item  w-100 switch">
+                        <div class="row gap-20">
                             <div class="col-md-12">
-                                <h2>Firewall status:</h2>
+                                <h2>Firewall rules</h2>
+                            </div>
+                            <div class="col-md-2">
                                 <table class="table table-striped switch-table">
                                     <thead>
                                     <th>ID</th>
-                                    <th>Enabled</th>
-                                    <th><a href="#" class="btn btn-sm btn-primary enable-switch-all">Enable all</a></th>
+                                    <th></th>
                                     </thead>
                                     <tbody class="switch-body">
 
                                     </tbody>
                                 </table>
 
+                            </div>
+                            <div class="col-md-9 offset-md-1">
+                                <table class="table table-striped rules-table">
+                                    <thead>
+                                    <th>ID</th>
+                                    <th>Priority</th>
+                                    <th>SRC</th>
+                                    <th>DST</th>
+                                    <th>Type</th>
+                                    <th>Protocol</th>
+                                    <th>Action</th>
+                                    <th class="add-rule-cell"></th>
+                                    </thead>
+                                    <tbody class="rules-body">
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="add-firewall-rule-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add rule</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="col-form-label" for="rule-src">Source IP</label>
+                                            <input id="rule-src" type="text" class="form-control" placeholder="10.0.0.1">
+                                        </div>
+                                        <div class="col">
+                                            <label class="col-form-label" for="rule-dst">Destination IP</label>
+                                            <input id="rule-dst" type="text" class="form-control" placeholder="10.0.0.2">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="rule-type">Type</label>
+                                        <select id="rule-type" class="form-control">
+                                            <option value="IPv4" selected>IPv4</option>
+                                            <option value="IPv6">IPv6</option>
+                                            <option value="ARP">ARP</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="rule-prot">Protocol</label>
+                                        <select id="rule-prot" class="form-control">
+                                            <option value="TCP" selected>TCP</option>
+                                            <option value="UDP">UDP</option>
+                                            <option value="ICMP">ICMP</option>
+                                            <option value="ICMPv6">ICMPv6</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="rule-priority">Priority</label>
+                                        <input id="rule-priority" type="number" class="form-control"
+                                               placeholder="Priority" min="0" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rule-action">Action</label>
+                                        <select id="rule-action" class="form-control">
+                                            <option selected value="DENY">Deny</option>
+                                            <option value="ALLOW">Allow</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success add-rule-form-button">Add rule</button>
                             </div>
                         </div>
                     </div>
