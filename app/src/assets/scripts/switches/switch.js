@@ -47,7 +47,7 @@ function validateNum(input, min, max) {
 function enableSwitch(enable, switchId) {
     $.ajax({
         method: 'PUT',
-        url: 'http://' + Cookies.get('ip') + '/firewall/module/' + enable + '/' + switchId,
+        url: 'http://192.168.56.101:8080/firewall/module/' + enable + '/' + switchId,
         datatype: 'jsonp',
         crossDomain: true,
         success: function (data) {
